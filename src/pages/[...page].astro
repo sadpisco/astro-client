@@ -1,0 +1,17 @@
+---
+import getPages from '@/hooks/getAllPages'
+import Welcome from '../components/Welcome.astro';
+import Layout from '@/layouts/Layout.astro'
+
+export async function getStaticPaths (){
+    const { pages }  = await getPages();
+  return pages.map(( page: any ) => {
+    return {
+    params: { page }
+  }})};
+const { page } = Astro.params;
+---
+<Layout>
+  {page}
+  <Welcome />
+</Layout>

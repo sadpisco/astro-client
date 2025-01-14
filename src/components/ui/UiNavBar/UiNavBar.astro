@@ -1,0 +1,8 @@
+---
+import getPages from '@/hooks/getAllPages'
+const { pages } = await getPages();
+---
+<section class="w-full max-w-screen-layout flex flex-col items-center">
+    <h1>NavBar</h1>
+    {pages.map((page: any) => <a href={`/${page === 'home' ? '' : page}`}>{page}</a>)}
+</section>
