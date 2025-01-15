@@ -1,8 +1,14 @@
 ---
 import getPages from '@/hooks/getAllPages'
+import Slugify from '@/utils/Slugify';
 const { pages } = await getPages();
 ---
 <section class="w-full max-w-screen-layout flex flex-col items-center">
     <h1>NavBar</h1>
-    {pages.map((page: any) => <a href={`/${page === 'home' ? '' : page}`}>{page}</a>)}
+    {pages.map((page: any) => {
+        let slug = Slugify(page);
+        return (
+    <a href={`/${slug === 'landing' ? '' : slug}`}>{page}</a>
+    )
+    })}
 </section>

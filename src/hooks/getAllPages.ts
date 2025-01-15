@@ -6,7 +6,7 @@ export default async function getPages() {
     query: GET_ALL_PAGES,
   });
   return {
-    pages: data.pages.map((element: any) => element.slug),
+    pages: data.pages.map((element: any) => element.name),
     raw: data.pages,
   };
 }

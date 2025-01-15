@@ -2,16 +2,19 @@
 import getPages from '@/hooks/getAllPages'
 import Welcome from '../components/Welcome.astro';
 import Layout from '@/layouts/Layout.astro'
+import Slugify from '@/utils/Slugify';
 
 export async function getStaticPaths (){
     const { pages }  = await getPages();
   return pages.map(( page: any ) => {
+    let slug = Slugify(page);
     return {
-    params: { page }
-  }})};
+    params: { page: slug }
+  }
+})};
 const { page } = Astro.params;
 ---
 <Layout>
-  {page}
+  <h1>You are on page: {page}</h1>
   <Welcome />
 </Layout>
