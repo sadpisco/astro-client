@@ -8,7 +8,7 @@ const { pages } = await getPages();
     {pages.map((page: any) => {
         let slug = Slugify(page);
         return (
-    <a href={`/${slug === 'landing' ? '' : slug}`}>{page}</a>
+    <a href={`/${slug === 'home' ? '' : slug}`}>{page}</a>
     )
     })}
 </section>
