@@ -9,11 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@apollo/client": "^3.12.4",
-    "@astrojs/react": "^4.1.2",
+    "@apollo/client": "^3.12.6",
+    "@astrojs/react": "^4.1.4",
     "@astrojs/tailwind": "^5.1.4",
     "@astrojs/vue": "^5.0.4",
-    "astro": "^5.1.2",
+    "astro": "^5.1.6",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
     "graphql": "^16.10.0",
