@@ -5,6 +5,13 @@ const endPoint = import.meta.env.LOCAL_CMS;
 const client = new ApolloClient({
   uri: endPoint, // Cambia esto al endpoint de tu GraphQL
   cache: new InMemoryCache(),
+  defaultOptions: {
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'ignore',
+    },
+  },
+  connectToDevTools: true,
 });
 
 export default client;
