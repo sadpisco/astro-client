@@ -7,7 +7,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   defaultOptions: {
     query: {
-      fetchPolicy: 'no-cache',
+      fetchPolicy: 'cache-first',
       errorPolicy: 'ignore',
     },
   },
