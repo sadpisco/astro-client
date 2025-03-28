@@ -1,31 +1,38 @@
+import { Box, Button, Heading, HStack, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 
 const CounterReact: React.FC = () => {
-  // Definir el estado del contador, inicializado en 0
   const [count, setCount] = useState<number>(0);
 
-  // Función para incrementar el contador
-  const increment = (): void => {
-    setCount(count + 1);
-  };
-
-  // Función para decrementar el contador
-  const decrement = (): void => {
-    setCount(count - 1);
-  };
-
-  // Función para resetear el contador
-  const reset = (): void => {
-    setCount(0);
-  };
-
   return (
-    <div>
-      <h1>Contador: {count}</h1>
-      <button onClick={increment}>Incrementar</button>
-      <button onClick={decrement}>Decrementar</button>
-      <button onClick={reset}>Resetear</button>
-    </div>
+    <Box p={6} borderWidth="1px" borderRadius="lg" boxShadow="md">
+      <VStack>
+        <Heading size="xl">Contador: {count}</Heading>
+        <HStack>
+          <Button
+            size='sm'
+            variant='solid'
+            onClick={() => setCount(count + 1)}
+          >
+            Incrementar
+          </Button>
+          <Button
+            size='md'
+            variant='outline'
+            onClick={() => setCount(count - 1)}
+          >
+            Decrementar
+          </Button>
+          <Button
+            size='lg'
+            variant="surface"
+            onClick={() => setCount(0)}
+          >
+            Resetear
+          </Button>
+        </HStack>
+      </VStack>
+    </Box>
   );
 };
 

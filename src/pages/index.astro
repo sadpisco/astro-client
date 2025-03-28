@@ -1,10 +1,12 @@
 ---
 import CounterReact from '@/components/atoms/CounterReact';
 import CounterVue from '@/components/atoms/CounterVue';
-import Layout from '../layouts/Layout.astro';
- 
+import Layout from '@/layouts/Layout.astro';
+import ChakraProvider from '@/providers/ChakraProvider';
 ---
 <Layout>
 	<CounterVue client:load/>
-	<CounterReact client:load/>
+	<ChakraProvider client:load>
+		<CounterReact client:load/>
+	</ChakraProvider>
 </Layout>
