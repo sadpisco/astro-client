@@ -4,12 +4,13 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && astro check",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@apollo/client": "^3.12.6",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/react": "^4.2.2",
     "@astrojs/tailwind": "^6.0.2",
     "@astrojs/vue": "^5.0.8",
@@ -24,6 +25,7 @@
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2",
     "vue": "^3.5.13"
   },
   "devDependencies": {
