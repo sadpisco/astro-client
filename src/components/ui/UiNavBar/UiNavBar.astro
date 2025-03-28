@@ -1,14 +1,14 @@
 ---
 import getPages from '@/hooks/getAllPages';
-import Slugify from '@/utils/Slugify';
-const { pages } = await getPages();
+import { type PageType } from '@/types/pages';
+const { raw } = await getPages();
+
+//Aca se iteran todas las paginas creadas en el CMS como links para el NavBar
 ---
-<section class="w-full max-w-screen-layout flex flex-col items-center">
-    <h1>NavBar</h1>
-    {pages.map((page: any) => {
-        let slug = Slugify(page);
+<section class="w-full max-w-screen-layout flex flex-col items-center bg-slate-600">
+    {raw.map((page: PageType) => {
         return (
-    <a href={`/${slug === 'home' ? '' : slug}`}>{page}</a>
+    <a href={`/${page.slug === 'landing' ? '' : page.slug}`}>{page.name}</a>
     )
     })}
 </section>

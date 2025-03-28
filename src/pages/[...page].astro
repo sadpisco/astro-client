@@ -1,32 +1,23 @@
 ---
 import getPages from '@/hooks/getAllPages';
 import Layout from '@/layouts/Layout.astro';
-import Slugify from '@/utils/Slugify';
+import { type PageType } from '@/types/pages';
 
 export async function getStaticPaths (){
-    const { pages, error }  = await getPages();
+    const { raw, error }  = await getPages();
     if (error) {
         return [];
-    }
-    return pages.map(( page: any ) => {
-        let slug = Slugify(page);
+    };
+    return raw.flatMap(( page: PageType ) => {
+      if (page.slug === 'landing') return [];
         return {
-            params: { page: slug }
+            params: { page: page.slug }
         }
     });
 };
 
 const { page } = Astro.params;
-const { error } = await getPages();
 ---
 <Layout>
-    {error ? (
-        <div class="text-red-500 p-4 bg-red-100 rounded-md m-4">
-            {error}
-        </div>
-    ) : (
-        <>
             <h1>You are on page {page}</h1>
-        </>
-    )}
 </Layout>
