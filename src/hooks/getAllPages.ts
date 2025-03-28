@@ -7,15 +7,14 @@ export default async function getPages() {
       query: GET_ALL_PAGES,
     });
     return {
-      pages: data.pages.map((element: any) => element.name),
-      raw: data.pages,
+      pages: data.pages,
       error: null
     };
   } catch (error) {
+    console.log("Error", error);
     return {
       pages: [],
-      raw: [],
-      error: 'No se pudo conectar al CMS. Por favor, intente más tarde.'
+      error: error
     };
   }
 }

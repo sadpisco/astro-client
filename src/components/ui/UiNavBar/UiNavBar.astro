@@ -1,14 +1,16 @@
 ---
 import getPages from '@/hooks/getAllPages';
 import { type PageType } from '@/types/pages';
-const { raw } = await getPages();
+const { pages } = await getPages();
 
 //Aca se iteran todas las paginas creadas en el CMS como links para el NavBar
 ---
-<section class="w-full max-w-screen-layout flex flex-col items-center bg-slate-600">
-    {raw.map((page: PageType) => {
+<section class="w-full max-w-screen-layout bg-slate-400 p-5">
+    <div class="w-full flex flex-row justify-around">
+    {pages.map((page: PageType) => {
         return (
     <a href={`/${page.slug === 'landing' ? '' : page.slug}`}>{page.name}</a>
     )
     })}
+    </div>
 </section>
