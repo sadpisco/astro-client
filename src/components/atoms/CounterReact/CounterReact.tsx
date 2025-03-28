@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-export default function CounterReact() {
+const CounterReact: React.FC = () => {
   // Definir el estado del contador, inicializado en 0
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState<number>(0);
 
   // Función para incrementar el contador
-  const increment = () => {
+  const increment = (): void => {
     setCount(count + 1);
   };
 
   // Función para decrementar el contador
-  const decrement = () => {
+  const decrement = (): void => {
     setCount(count - 1);
   };
 
   // Función para resetear el contador
-  const reset = () => {
+  const reset = (): void => {
     setCount(0);
   };
 
@@ -27,4 +27,6 @@ export default function CounterReact() {
       <button onClick={reset}>Resetear</button>
     </div>
   );
-}
+};
+
+export default CounterReact;

@@ -1,1 +1,1 @@
-export { default } from './CounterReact';
+export { default } from './CounterReact.tsx';

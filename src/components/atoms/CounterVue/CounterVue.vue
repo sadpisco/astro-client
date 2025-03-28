@@ -29,11 +29,3 @@ const reset = () => {
 };
 </script>
 
-<style scoped>
-button {
-  margin: 5px;
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-</style>
