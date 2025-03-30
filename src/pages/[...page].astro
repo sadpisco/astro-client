@@ -4,10 +4,7 @@ import Layout from '@/layouts/Layout.astro';
 import { type PageType } from '@/types/pages';
 
 export async function getStaticPaths (){
-    const { pages, error }  = await getPages();
-    if (error) {
-        return [];
-    };
+    const { pages }  = await getPages();
     return pages.flatMap(( page: PageType ) => {
       if (page.slug === 'landing') return [];
         return {

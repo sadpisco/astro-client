@@ -1,5 +1,6 @@
 import GET_ALL_PAGES from "@/graphql/queries/getAllPages";
 import client from "@/lib/apollo-client";
+import { orderByHome } from '@/utils/reorder';
 
 export default async function getPages() {
   try {
@@ -7,14 +8,13 @@ export default async function getPages() {
       query: GET_ALL_PAGES,
     });
     return {
-      pages: data.pages,
+      pages: orderByHome(data.pages),
       error: null
     };
   } catch (error) {
-    console.log("Error", error);
     return {
       pages: [],
-      error: error
+      error
     };
   }
 }
