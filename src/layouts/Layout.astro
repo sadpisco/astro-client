@@ -1,6 +1,6 @@
 ---
-import Footer from "@/components/ui/Footer";
-import Navbar from "@/components/ui/Navbar";
+import Footer from "@/components/molecules/Footer";
+import Navbar from "@/components/molecules/Navbar";
 import ChakraProvider from '@/providers/ChakraProvider';
 ---
 <!doctype html>
@@ -13,7 +13,7 @@ import ChakraProvider from '@/providers/ChakraProvider';
 		<title>Astro Basics</title>
 	</head>
 	<body class="flex flex-col items-center justify-between h-screen w-screen">
-		<ChakraProvider client:load>
+		<ChakraProvider>
 		<Navbar />
 		<slot />
 		<Footer />

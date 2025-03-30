@@ -1,18 +1,26 @@
-import { Box, Button, Heading, HStack, VStack } from "@chakra-ui/react";
+import Button from '@/components/atoms/Button';
+import { Box, Heading, HStack, VStack } from "@chakra-ui/react";
 import { useState } from "react";
 
 const CounterReact: React.FC = () => {
   const [count, setCount] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
-    <Box p={6} borderWidth="1px" borderRadius="lg" boxShadow="md">
+    <Box className='shadow-md p-6 border-2 border-gray-300 rounded-lg'>
       <VStack>
         <Heading size="xl">Contador: {count}</Heading>
         <HStack>
           <Button
             size='sm'
-            variant='solid'
-            onClick={() => setCount(count + 1)}
+            variant='ghost'
+            loading={loading}
+            colorScheme='blue'
+            disabled
+            onClick={() => {
+              setCount(count + 1)
+              setLoading(true)
+            }}
           >
             Incrementar
           </Button>
@@ -25,8 +33,10 @@ const CounterReact: React.FC = () => {
           </Button>
           <Button
             size='lg'
-            variant="surface"
-            onClick={() => setCount(0)}
+            onClick={() => {
+              setCount(0)
+              setLoading(false)
+            }}
           >
             Resetear
           </Button>
