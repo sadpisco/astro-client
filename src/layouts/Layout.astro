@@ -1,22 +1,23 @@
 ---
 import Footer from "@/components/molecules/Footer";
 import Navbar from "@/components/molecules/Navbar";
-import ChakraProvider from '@/providers/ChakraProvider';
+import "@/styles/global.css";
+import { Container } from "@mui/material";
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" id="root">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>ExampleProject</title>
 	</head>
-	<body class="flex flex-col items-center justify-between h-screen w-screen">
-		<ChakraProvider>
-		<Navbar />
-		<slot />
-		<Footer />
-	</ChakraProvider>
+	<body>
+		<Container className="h-[100vh] flex flex-col justify-between px-0">
+			<Navbar />
+			<slot />
+			<Footer />
+		</Container>
 	</body>
 </html>
