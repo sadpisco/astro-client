@@ -1,37 +1,65 @@
 import Button from '@/components/atoms/Button';
-import { Buildings } from '@phosphor-icons/react';
+import { ClockClockwise, MinusCircle, PlusCircle } from '@phosphor-icons/react';
 import { useState } from "react";
 
 const CounterReact: React.FC = () => {
   const [count, setCount] = useState<number>(0);
 
+  function plusCount() {
+    setCount(count + 1)
+  }
+
+  function minusCount() {
+    setCount(count - 1)
+  }
+
+  function resetCount() {
+    setCount(0)
+  }
+
   return (
-    <div className='shadow-md p-6 border-2 border-gray-300 rounded-lg'>
-      <h1 className='text-xl font-bold mb-4'>Contador: {count}</h1>
+    <section className='bg-slate-200'>
+      <h1>Contador: {count}</h1>
       <div className="flex gap-2">
         <Button
-          onClick={() => {
-            setCount(count + 1)
-          }}
-          startIcon={<Buildings />}
+          endIcon={<PlusCircle />}
+          onClick={plusCount}
+          className='w-36'
+          disabled={count >= 10}
         >
-          Incrementar
+          Aumentar
         </Button>
         <Button
-          endIcon={<Buildings />}
-          onClick={() => setCount(count - 1)}
+          endIcon={<MinusCircle />}
+          onClick={minusCount}
+          variant='morning_green'
         >
           Decrementar
         </Button>
         <Button
-          onClick={() => {
-            setCount(0)
-          }}
+          endIcon={<ClockClockwise />}
+          onClick={resetCount}
+          variant='neon_white'
+        >
+          Resetear
+        </Button>
+        <Button
+          endIcon={<ClockClockwise />}
+          onClick={resetCount}
+          variant='night_green'
+        >
+          Resetear
+        </Button>
+        <Button
+          endIcon={<ClockClockwise />}
+          onClick={resetCount}
+          variant='neon_black'
+          disabled={false}
         >
           Resetear
         </Button>
       </div>
-    </div>
+    </section>
   );
 };
 

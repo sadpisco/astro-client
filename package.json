@@ -16,6 +16,7 @@
     "@astrojs/vue": "^5.0.8",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@fontsource/kanit": "^5.2.5",
     "@mui/material": "^7.0.1",
     "@mui/system": "^7.0.1",
     "@phosphor-icons/react": "^2.1.7",
