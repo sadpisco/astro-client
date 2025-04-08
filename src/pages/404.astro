@@ -1,6 +1,10 @@
 ---
+import Typography from '@/components/atoms/Typography';
 import Layout from '@/layouts/Layout.astro';
+import { Container } from "@mui/material";
 ---
 <Layout>
-    <h1>404 - Page Not Found</h1>
+    <Container className="h-[100vh] flex flex-col items-center justify-center px-0 font-main">
+    <Typography variant='label_2' className='dark:text-white text-center'>404 - Page Not Found</Typography>
+    </Container>
 </Layout>

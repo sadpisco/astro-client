@@ -23,15 +23,15 @@ const buttonVariants = cva(
                 neon_black:
                     'bg-black text-light-150',
                 icon:
-                    'text-black dark:text-white dark:bg-black bg-white',
+                    'text-black bg-white hover:text-light-400 shadow-lg ',
                 link:
-                    'bg-transparent text-light-400 dark:text-white shadow-none hover:scale-110 hover:shadow-none'
+                    'bg-transparent text-light-400 shadow-none hover:scale-110 hover:shadow-none'
             },
             size: {
                 default: 'h-12 px-6',
                 sm: 'h-9 px-3',
                 lg: 'h-16 px-12',
-                icon: 'min-w-12 rounded-full'
+                icon: 'min-w-12 rounded-full min-h-12'
             }
         },
         defaultVariants: {

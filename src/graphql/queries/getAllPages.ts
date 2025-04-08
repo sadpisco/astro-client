@@ -4,6 +4,7 @@ export default gql`
     pages {
       name
       slug
+      phosphorIcon
     }
   }
 `;

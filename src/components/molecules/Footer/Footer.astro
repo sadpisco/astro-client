@@ -1,19 +1,28 @@
 ---
-import Button from '@/components/atoms/Button';
-import getPages from '@/hooks/getAllPages';
-import { type PageType } from '@/types/pages';
+import Button from "@/components/atoms/Button";
+import getPages from "@/hooks/getAllPages";
+import { type PageType } from "@/types/pages";
 const { pages } = await getPages();
 
 //Aca se iteran todas las paginas creadas en el CMS como links para el NavBar
 ---
-<section class="w-full bg-slate-300 p-5">
-    <div class="w-full flex flex-row justify-around">
-    {pages.map((page: PageType) => {
-        return (
-        <Button variant='neon_black'>
-            <a href={`/${page.slug === 'home' ? '' : page.slug}`}>{page.name}</a>
-        </Button>
-    )
-    })}
-    </div>
+
+<section class="w-full p-5">
+    {
+        pages.length > 0 ? (
+            <div class="w-full flex flex-row justify-around">
+                {pages.map((page: PageType) => {
+                    return (
+                        <Button variant="link" client:load>
+                            <a
+                                href={`/${page.slug === "home" ? "" : page.slug}`}
+                            >
+                                {page.name}
+                            </a>
+                        </Button>
+                    );
+                })}
+            </div>
+        ) : null
+    }
 </section>
