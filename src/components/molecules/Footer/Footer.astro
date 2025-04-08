@@ -1,4 +1,5 @@
 ---
+import Button from '@/components/atoms/Button';
 import getPages from '@/hooks/getAllPages';
 import { type PageType } from '@/types/pages';
 const { pages } = await getPages();
@@ -9,7 +10,9 @@ const { pages } = await getPages();
     <div class="w-full flex flex-row justify-around">
     {pages.map((page: PageType) => {
         return (
-    <a href={`/${page.slug === 'home' ? '' : page.slug}`}>{page.name}</a>
+        <Button variant='neon_black'>
+            <a href={`/${page.slug === 'home' ? '' : page.slug}`}>{page.name}</a>
+        </Button>
     )
     })}
     </div>

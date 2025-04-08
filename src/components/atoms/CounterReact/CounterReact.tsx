@@ -1,4 +1,5 @@
 import Button from '@/components/atoms/Button';
+import Typography from '@/components/atoms/Typography';
 import { ClockClockwise, MinusCircle, PlusCircle } from '@phosphor-icons/react';
 import { useState } from "react";
 
@@ -18,14 +19,13 @@ const CounterReact: React.FC = () => {
   }
 
   return (
-    <section className='bg-slate-200'>
-      <h1>Contador: {count}</h1>
+    <section>
+      <Typography variant='heading'>Contador: {count}</Typography>
       <div className="flex gap-2">
         <Button
           endIcon={<PlusCircle />}
           onClick={plusCount}
           className='w-36'
-          disabled={count >= 10}
         >
           Aumentar
         </Button>
@@ -40,21 +40,6 @@ const CounterReact: React.FC = () => {
           endIcon={<ClockClockwise />}
           onClick={resetCount}
           variant='neon_white'
-        >
-          Resetear
-        </Button>
-        <Button
-          endIcon={<ClockClockwise />}
-          onClick={resetCount}
-          variant='night_green'
-        >
-          Resetear
-        </Button>
-        <Button
-          endIcon={<ClockClockwise />}
-          onClick={resetCount}
-          variant='neon_black'
-          disabled={false}
         >
           Resetear
         </Button>

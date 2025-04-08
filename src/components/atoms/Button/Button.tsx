@@ -8,7 +8,7 @@ import { twMerge } from 'tailwind-merge';
 // Button which will use loading prop, must use an specified wight, otherwise will shrink once loading is true.
 
 const buttonVariants = cva(
-    'relative shadow-md rounded-lg normal-case transition-all duration-200 inline-flex items-center justify-center font-medium focus-visible:outline-none focus-visible:ring-2 text-lg focus-visible:ring-green-500 focus-visible:ring-offset-2 font-main hover:scale-105 hover:shadow-xl',
+    'relative shadow-md rounded-lg normal-case transition-all duration-200 inline-flex items-center justify-center font-medium focus-visible:outline-none focus-visible:ring-2 text-xs sm:text-md md:text-lg focus-visible:ring-green-500 focus-visible:ring-offset-2 font-main hover:scale-105 hover:shadow-xl',
     {
         variants: {
             variant: {
@@ -47,7 +47,7 @@ export type UiButtonProps = ButtonPropsVariantOverrides &
         className?: string;
         onClick?: () => void;
         loading?: boolean;
-        buttonSize?: 'default' | 'sm' | 'lg' | 'icon' | null;
+        buttonSize?: string;
         disabled?: boolean;
         startIcon?: React.ReactNode;
         endIcon?: React.ReactNode;
@@ -55,14 +55,14 @@ export type UiButtonProps = ButtonPropsVariantOverrides &
         children?: React.ReactNode;
     }
 
-const Button: React.FC<UiButtonProps> = ({ className, children, onClick, loading, buttonSize, variant, disabled, startIcon, endIcon }) => {
+const Button: React.FC<UiButtonProps> = ({ className, children, onClick, loading, size, variant, disabled, startIcon, endIcon }) => {
     return (
         <MuiButton
             onClick={onClick}
             loading={loading}
             disabled={disabled}
             className={twMerge(
-                buttonVariants({ variant: variant, size: buttonSize }),
+                buttonVariants({ variant: variant, size: size }),
                 disabled && 'opacity-50',
                 className
             )}
