@@ -5,7 +5,7 @@ import * as React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const typographyVariants = cva(
-    'font-main text-start text-black',
+    'font-main text-start text-black dark:text-white',
     {
         variants: {
             variant: {

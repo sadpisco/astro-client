@@ -15,19 +15,23 @@ const buttonVariants = cva(
                 light_green:
                     'bg-gradient-to-l from-light-100 to-light-150 text-black',
                 morning_green:
-                    'bg-gradient-to-r from-light-100 to-light-400 text-black',
+                    'bg-gradient-to-r from-light-100 to-light-400 text-black dark:text-white',
                 neon_white:
                     'bg-light-0 text-light-400',
                 night_green:
                     'bg-gradient-to-r from-dark-0 via-light-400 to-light-200 text-white',
                 neon_black:
                     'bg-black text-light-150',
+                icon:
+                    'text-black dark:text-white dark:bg-black bg-white',
+                link:
+                    'bg-transparent text-light-400 dark:text-white shadow-none hover:scale-110 hover:shadow-none'
             },
             size: {
                 default: 'h-12 px-6',
                 sm: 'h-9 px-3',
                 lg: 'h-16 px-12',
-                icon: 'min-w-10'
+                icon: 'min-w-12 rounded-full'
             }
         },
         defaultVariants: {
@@ -53,11 +57,13 @@ export type UiButtonProps = ButtonPropsVariantOverrides &
         endIcon?: React.ReactNode;
         variant?: string;
         children?: React.ReactNode;
+        id?: string;
     }
 
-const Button: React.FC<UiButtonProps> = ({ className, children, onClick, loading, size, variant, disabled, startIcon, endIcon }) => {
+const Button: React.FC<UiButtonProps> = ({ id, className, children, onClick, loading, size, variant, disabled, startIcon, endIcon }) => {
     return (
         <MuiButton
+            id={id}
             onClick={onClick}
             loading={loading}
             disabled={disabled}
