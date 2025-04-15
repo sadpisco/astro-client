@@ -1,4 +1,4 @@
-import getPages from '@/hooks/getAllPages';
+import getPages from '@/hooks/useAllPages';
 import { defineMiddleware } from 'astro:middleware';
 import LodashPackage from 'lodash';
 

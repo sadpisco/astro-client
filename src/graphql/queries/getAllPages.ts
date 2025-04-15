@@ -1,6 +1,6 @@
 import { gql } from "graphql-tag";
 export default gql`
-  query ExampleQuery {
+  query getAllPages {
     pages {
     documentId
       name

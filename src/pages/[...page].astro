@@ -1,20 +1,20 @@
 ---
-import getPages from "@/hooks/getAllPages";
+import getPages from "@/hooks/useAllPages";
 import Layout from "@/layouts/Layout.astro";
 import { type PageType } from "@/types/pages";
 
 export async function getStaticPaths() {
-    const { pages } = await getPages();
-    return pages.flatMap((page: PageType) => {
-        if (page.slug === "home") return [];
-        return {
-            params: { page: page.slug },
-        };
-    });
+  const { pages } = await getPages();
+  return pages.flatMap((page: PageType) => {
+    if (page.slug === "home") return [];
+    return {
+      params: { page: page.slug },
+    };
+  });
 }
 const { page } = Astro.params;
 ---
 
 <Layout>
-    <h1 class="dark:text-white">You are on page {page}</h1>
+  <h1 class="dark:text-white">You are on page {page}</h1>
 </Layout>

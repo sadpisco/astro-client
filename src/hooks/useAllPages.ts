@@ -12,6 +12,7 @@ export default async function getPages() {
       error: null
     };
   } catch (error) {
+    console.error("Error fetching pages", error);
     return {
       pages: [],
       error
