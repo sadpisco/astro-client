@@ -7,6 +7,7 @@ export default async function getPages() {
     const { data } = await client.query({
       query: GET_ALL_PAGES,
     });
+    // console.log("pages", data);
     return {
       pages: orderByHome(data.pages),
       error: null

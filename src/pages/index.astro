@@ -1,7 +1,12 @@
 ---
-import CounterReact from '@/components/atoms/CounterReact';
-import Layout from '@/layouts/Layout.astro';
+import CounterReact from "@/components/atoms/CounterReact";
+import usePage from "@/hooks/usePage";
+import Layout from "@/layouts/Layout.astro";
+
+const { fetchPageByDocId } = await usePage();
+fetchPageByDocId("cdxgque49fdl5xk0h7i8v818");
 ---
+
 <Layout>
-	<CounterReact client:load/>
+  <CounterReact client:load />
 </Layout>

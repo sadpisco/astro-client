@@ -7,3 +7,4 @@ export const orderByHome = function (pages: PageType[]) {
     if (isEmpty(pages)) return [];
     return [...pages].sort((a, b) => (a.name === "Home" ? -1 : b.name === "Home" ? 1 : 0));
 };
+
