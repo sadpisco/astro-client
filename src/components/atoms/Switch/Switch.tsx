@@ -10,7 +10,7 @@ const Switch: React.FC<SwitchProps> = ({ className = "", onChange }) => {
         <MuiSwitch
             className={className}
             color="default"
-            onChange={(value, checked) => onChange(checked)}
+            onChange={(_, checked) => onChange(checked)}
 
         />
     )
