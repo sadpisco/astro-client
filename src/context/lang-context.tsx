@@ -1,26 +1,25 @@
-import React, { createContext, useContext, useState } from "react";
+// import React, { createContext, useContext } from "react";
 
-type TypeLangContext = {
-    lang: string;
-    setLang: (lang: string) => void;
-};
+// type TypeLangContext = {
+//     lang: string;
+// };
 
-const LangContext = createContext<TypeLangContext | undefined>(undefined);
+// const LangContext = createContext<TypeLangContext | undefined>(undefined);
 
-export const LangContextProvider = ({ children }: { children: React.ReactNode }) => {
-    const [lang, setLang] = useState("en");
-    console.log('LangContext', lang);
-    return (
-        <LangContext.Provider value={{ lang, setLang }}>
-            {children}
-        </LangContext.Provider>
-    );
-};
+// export const LangContextProvider = ({ children }: { children: React.ReactNode }) => {
+//     const lang = "en";
+//     console.log('LangContext', lang);
+//     return (
+//         <LangContext.Provider value={{ lang }}>
+//             {children}
+//         </LangContext.Provider>
+//     );
+// };
 
-export const useLangContext = () => {
-    const context = useContext(LangContext);
-    if (!context) {
-        throw new Error("Error on LangContext");
-    }
-    return context;
-};
+// export const useLangContext = () => {
+//     const context = useContext(LangContext);
+//     if (!context) {
+//         throw new Error("Error on LangContext");
+//     }
+//     return context;
+// };
