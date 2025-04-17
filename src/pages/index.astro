@@ -1,12 +1,19 @@
 ---
 import CounterReact from "@/components/atoms/CounterReact";
+import Blocks from "@/components/Blocks.astro";
+import getPages from "@/hooks/useAllPages";
 import usePage from "@/hooks/usePage";
 import Layout from "@/layouts/Layout.astro";
 
 const { fetchPageByDocId } = await usePage();
-fetchPageByDocId("cdxgque49fdl5xk0h7i8v818");
+const { pages } = await getPages();
+const homeDocId = pages.find((page) => {
+  if (page.slug === "home") return page.documentId;
+});
+const blocks = await fetchPageByDocId(homeDocId?.documentId);
 ---
 
 <Layout>
+  <Blocks block={blocks} />
   <CounterReact client:load />
 </Layout>

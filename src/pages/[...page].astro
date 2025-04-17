@@ -1,5 +1,7 @@
 ---
+import Blocks from "@/components/Blocks.astro";
 import getPages from "@/hooks/useAllPages";
+import usePage from "@/hooks/usePage";
 import Layout from "@/layouts/Layout.astro";
 import { type PageType } from "@/types/pages";
 
@@ -8,13 +10,22 @@ export async function getStaticPaths() {
   return pages.flatMap((page: PageType) => {
     if (page.slug === "home") return [];
     return {
-      params: { page: page.slug },
+      params: {
+        page: page.slug,
+      },
+      props: {
+        documentId: page.documentId,
+      },
     };
   });
 }
 const { page } = Astro.params;
+const { documentId } = Astro.props;
+const { fetchPageByDocId } = await usePage();
+const blocks = await fetchPageByDocId(documentId);
 ---
 
 <Layout>
+  <Blocks block={blocks} />
   <h1 class="dark:text-white">You are on page {page}</h1>
 </Layout>

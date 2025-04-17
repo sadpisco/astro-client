@@ -1,4 +1,3 @@
-//Esta funcion debe traer todos los Blocks de contenido de una pagina. 
 import GET_LANGS from '@/graphql/queries/getLangs';
 import client from "@/lib/apollo-client";
 import { getLocalesCode } from '@/utils/parsing';
@@ -23,7 +22,7 @@ export default async function usePage() {
         }
     };
 
-    async function fetchPageByDocId(documentId: string) {
+    async function fetchPageByDocId(documentId: string = "") {
         const locales = await fetchLocales();
         if (locales?.length) {
             const result = await Promise.all(
@@ -31,11 +30,10 @@ export default async function usePage() {
                     try {
                         return await fetchPageByLocale(documentId, code)
                     } catch (error) {
-                        console.log('Error123')
+                        console.error(`Locale "${code}" has not been found in documentId "${documentId}".`);
                     }
                 }
                 ));
-            console.log('result', result);
             return result;
         }
     };

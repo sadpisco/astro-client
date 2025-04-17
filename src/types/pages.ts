@@ -3,4 +3,5 @@ export type PageType = {
     name: string;
     slug: string;
     phosphorIcon: string;
+    documentId: string;
 }

@@ -1,8 +1,10 @@
 ---
 import Button from "@/components/atoms/Button/Button";
+import ToggleLang from "../ToggleLang/ToggleLang";
 import ToggleTheme from "@/components/molecules/ToggleTheme";
 import getPages from "@/hooks/useAllPages";
 import { type PageType } from "@/types/pages";
+import { LangContextProvider } from "@/context/lang-context";
 import Typography from "@/components/atoms/Typography";
 import DinamicIcon from "@/components/atoms/DinamicIcon";
 const { pages } = await getPages();
@@ -16,6 +18,7 @@ const { pages } = await getPages();
   {
     pages.length > 0 ? (
       <div class="w-full flex flex-row justify-between px-5">
+        <ToggleTheme client:load />
         {pages.map((page: PageType) => {
           return (
             <a href={`/${page.slug === "home" ? "" : page.slug}`}>
@@ -34,13 +37,19 @@ const { pages } = await getPages();
             </a>
           );
         })}
-        <ToggleTheme client:load />
+        <LangContextProvider client:only="react">
+          <ToggleLang client:only="react" />
+        </LangContextProvider>
       </div>
     ) : (
       <div class="relative flex py-2">
+        <LangContextProvider client:only="react">
+          <ToggleLang client:only="react" />
+        </LangContextProvider>
         <Typography className="w-full text-center self-center">
           No pages found
         </Typography>
+
         <ToggleTheme
           className="absolute right-4 top-4 -translate-y-1/2"
           client:load

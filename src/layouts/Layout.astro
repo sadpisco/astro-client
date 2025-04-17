@@ -5,20 +5,23 @@ import "@/styles/global.css";
 import "@fontsource/kanit";
 import { Container } from "@mui/material";
 ---
+
 <!doctype html>
 <html lang="en" id="root">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Carwash Template</title>
-	</head>
-	<body class="dark:bg-black">
-		<Container className="h-[100vh] flex flex-col justify-between px-0 font-main">
-			<Navbar />
-			<slot />
-			<Footer />
-		</Container>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Carwash Template</title>
+  </head>
+  <body class="dark:bg-black">
+    <Container
+      className="h-[100vh] flex flex-col justify-between px-0 font-main"
+    >
+      <Navbar client:load />
+      <slot />
+      <Footer />
+    </Container>
+  </body>
 </html>
