@@ -56,15 +56,24 @@ const { pages } = await getPages();
     const btn = document.getElementById("toggle-theme");
     const html = document.documentElement;
 
-    //Users local default theme
-    const isDarkTheme = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    if (!isDarkTheme) {
-      localStorage.setItem("theme", "light");
+    //First theme check && keep default theme
+    const isFirstTheme = localStorage.getItem("theme");
+    if (isFirstTheme === null) {
+      console.log("isFirstTheme", isFirstTheme);
+      const isDarkTheme = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      if (!isDarkTheme) {
+        localStorage.setItem("theme", "light");
+      }
+      if (isDarkTheme) {
+        localStorage.setItem("theme", "dark");
+        html.classList.add("dark");
+      }
     }
-    if (isDarkTheme) {
-      localStorage.setItem("theme", "dark");
+
+    // Aplicar tema guardado si existe
+    if (localStorage.getItem("theme") === "dark") {
       html.classList.add("dark");
     }
 
