@@ -56,10 +56,19 @@ const { pages } = await getPages();
     const btn = document.getElementById("toggle-theme");
     const html = document.documentElement;
 
-    // Aplicar tema guardado si existe
-    if (localStorage.getItem("theme") === "dark") {
+    //Users local default theme
+    const isDarkTheme = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (!isDarkTheme) {
+      localStorage.setItem("theme", "light");
+    }
+    if (isDarkTheme) {
+      localStorage.setItem("theme", "dark");
       html.classList.add("dark");
     }
+
+    //Toggle listener
     btn?.addEventListener("click", () => {
       const isDark = html.classList.toggle("dark");
       localStorage.setItem("theme", isDark ? "dark" : "light");

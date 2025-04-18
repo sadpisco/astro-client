@@ -8,7 +8,6 @@ export default async function useLang() {
             const { data: langs } = await client.query({
                 query: GET_LANGS,
             });
-            console.log('langs', langs)
             return getLocalesCode(langs.i18NLocales);
         } catch (error) {
             console.log(error);
