@@ -1,7 +1,6 @@
 ---
 import Footer from "@/components/molecules/Footer";
 import Navbar from "@/components/molecules/Navbar";
-import { LangProvider } from "@/context/lang-context";
 import "@/styles/global.css";
 import "@fontsource/kanit";
 import { Container } from "@mui/material";
@@ -20,11 +19,9 @@ import { Container } from "@mui/material";
     <Container
       className="h-[100vh] flex flex-col justify-between px-0 font-main"
     >
-      <LangProvider defaultLang="en" client:load>
-        <Navbar />
-        <slot />
-        <Footer />
-      </LangProvider>
+      <Navbar />
+      <slot />
+      <Footer />
     </Container>
   </body>
 </html>

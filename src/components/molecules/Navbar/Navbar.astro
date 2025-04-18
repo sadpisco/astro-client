@@ -7,7 +7,6 @@ import { type PageType } from "@/types/pages";
 import Typography from "@/components/atoms/Typography";
 import DinamicIcon from "@/components/atoms/DinamicIcon";
 const { pages } = await getPages();
-
 //Aca se iteran todas las paginas creadas en el CMS como links para el NavBar
 ---
 
@@ -52,6 +51,7 @@ const { pages } = await getPages();
   }
 </section>
 <script>
+  //Dark mode toggle
   document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("toggle-theme");
     const html = document.documentElement;

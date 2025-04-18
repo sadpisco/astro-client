@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 const { page } = Astro.params;
 const { documentId } = Astro.props;
 const { fetchPageByDocId } = await usePage();
-const blocks = await fetchPageByDocId(documentId);
+const blocks = await fetchPageByDocId(documentId, page);
 ---
 
 <Layout>

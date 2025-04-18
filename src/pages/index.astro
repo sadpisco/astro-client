@@ -11,6 +11,7 @@ const homeDocId = pages.find((page) => {
   if (page.slug === "home") return page.documentId;
 });
 const blocks = await fetchPageByDocId(homeDocId?.documentId);
+console.log("blocks", blocks);
 ---
 
 <Layout>
