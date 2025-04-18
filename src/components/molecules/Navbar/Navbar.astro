@@ -36,7 +36,7 @@ const { pages } = await getPages();
             </a>
           );
         })}
-        <ToggleLang client:load />
+        <ToggleLang client:only="react" />
       </div>
     ) : (
       <div class="relative flex py-2">
@@ -47,7 +47,6 @@ const { pages } = await getPages();
         <Typography className="w-full text-center self-center">
           No pages found
         </Typography>
-        <ToggleLang client:load />
       </div>
     )
   }
