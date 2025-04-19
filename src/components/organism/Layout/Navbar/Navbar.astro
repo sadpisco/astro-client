@@ -1,11 +1,12 @@
 ---
-import Button from "@/components/atoms/Button/Button";
+// import Button from "@/components/atoms/Button/Button";
+// import { type PageType } from "@/types/pages";
+// import DinamicIcon from "@/components/atoms/DinamicIcon";
 import ToggleLang from "@/components/molecules/ToggleLang";
 import ToggleTheme from "@/components/molecules/ToggleTheme";
 import usePage from "@/hooks/usePage";
-import { type PageType } from "@/types/pages";
 import Typography from "@/components/atoms/Typography";
-import DinamicIcon from "@/components/atoms/DinamicIcon";
+import NavLinks from "@/components/molecules/NavLinks";
 const { fetchAllPages } = await usePage();
 const { pages } = await fetchAllPages();
 //Aca se iteran todas las paginas creadas en el CMS como links para el NavBar
@@ -18,7 +19,7 @@ const { pages } = await fetchAllPages();
     pages.length > 0 ? (
       <div class="w-full flex flex-row justify-between px-5">
         <ToggleTheme client:load />
-        {pages.map((page: PageType) => {
+        {/* {pages.map((page: PageType) => {
           return (
             <a href={`/${page.slug === "home" ? "" : page.slug}`}>
               <Button
@@ -35,7 +36,8 @@ const { pages } = await fetchAllPages();
               </Button>
             </a>
           );
-        })}
+        })} */}
+        <NavLinks pages={pages} client:only="react" />
         <ToggleLang client:only="react" />
       </div>
     ) : (
@@ -59,7 +61,6 @@ const { pages } = await fetchAllPages();
 
     //First theme check && keep default theme
     const isFirstTheme = localStorage.getItem("theme");
-    console.log("isFirstTheme", isFirstTheme);
     if (isFirstTheme === null) {
       const isDarkTheme = window.matchMedia(
         "(prefers-color-scheme: dark)"

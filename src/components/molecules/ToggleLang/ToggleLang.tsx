@@ -4,7 +4,6 @@ import { parseLangCode } from '@/utils/parsing';
 
 export default function ToggleLang() {
     //Users language and fallback to en
-    console.log(navigator.language);
     let firstLang = localStorage?.getItem('lang');
     if (firstLang === null) {
         if (!navigator.language) {

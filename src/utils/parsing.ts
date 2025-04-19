@@ -32,4 +32,5 @@ export function getBlockFromManyLocales(data: any, blockName: string): any[] {
 export function getAllBlocksFromPage(data: any) {
     if (!data) return [];
     // console.log('getAllBlocksFromPage', data);
-}
+};
+

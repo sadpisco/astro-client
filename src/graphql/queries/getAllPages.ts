@@ -1,11 +1,11 @@
 import { gql } from "graphql-tag";
 export default gql`
-  query getAllPages {
-    pages {
+query Query($locale: I18NLocaleCode) {
+  pages(locale: $locale) {
+    name
+    slug
+    phosphorIcon
     documentId
-      name
-      slug
-      phosphorIcon
-    }
   }
+}
 `;
