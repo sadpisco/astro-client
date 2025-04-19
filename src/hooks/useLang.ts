@@ -14,12 +14,12 @@ export default async function useLang() {
         }
     };
 
-    async function fetchPageByLocale(documentId: string, code: string) {
+    async function fetchPageBlocksByLocale(documentId: string, code: string) {
         const endPoint = `${import.meta.env.LOCAL_CMS}/api/pages/${documentId}?populate[blocks][populate]=*&locale=${code}`;
         const response = await fetch(endPoint)
         if (!response.ok) throw new Error('Failed to fetch data');
         return response.json();
     };
 
-    return { fetchLocales, fetchPageByLocale };
+    return { fetchLocales, fetchPageBlocksByLocale };
 }

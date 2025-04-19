@@ -1,12 +1,16 @@
 ---
+import LandingClients from "@/components/organism/Home/LandingClients";
+import { getAllBlocksFromPage, getBlockFromManyLocales } from "@/utils/parsing";
 interface Blocks {
-  block: any;
+  blocks: any;
 }
-
-const { block } = Astro.props;
-// console.log(block);
+const { blocks } = Astro.props;
+getAllBlocksFromPage(blocks);
 ---
 
 <section>
-  <h1 class="text-white">12321</h1>
+  <LandingClients
+    block={getBlockFromManyLocales(blocks, "blocks.landing-hero")}
+    client:only="react"
+  />
 </section>

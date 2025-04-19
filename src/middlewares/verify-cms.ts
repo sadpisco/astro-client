@@ -1,14 +1,15 @@
-import getPages from '@/hooks/useAllPages';
+import usePage from "@/hooks/usePage";
 import { defineMiddleware } from 'astro:middleware';
 import LodashPackage from 'lodash';
 
 const { isEmpty } = LodashPackage;
+const { fetchAllPages } = await usePage();
 
 export const onRequest = defineMiddleware(async (context, next) => {
     if (context.url.pathname === '/404') {
         return next();
     };
-    const { pages } = await getPages();
+    const { pages } = await fetchAllPages();
     console.info('Successfully connected to CMS.');
     if (isEmpty(pages)) {
         return new Response(null, {

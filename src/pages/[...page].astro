@@ -1,12 +1,12 @@
 ---
 import Blocks from "@/components/Blocks.astro";
-import getPages from "@/hooks/useAllPages";
 import usePage from "@/hooks/usePage";
 import Layout from "@/layouts/Layout.astro";
 import { type PageType } from "@/types/pages";
 
 export async function getStaticPaths() {
-  const { pages } = await getPages();
+  const { fetchAllPages } = await usePage();
+  const { pages } = await fetchAllPages();
   return pages.flatMap((page: PageType) => {
     if (page.slug === "home") return [];
     return {

@@ -1,12 +1,13 @@
 ---
 import Button from "@/components/atoms/Button/Button";
-import ToggleLang from "../ToggleLang/ToggleLang";
+import ToggleLang from "@/components/molecules/ToggleLang";
 import ToggleTheme from "@/components/molecules/ToggleTheme";
-import getPages from "@/hooks/useAllPages";
+import usePage from "@/hooks/usePage";
 import { type PageType } from "@/types/pages";
 import Typography from "@/components/atoms/Typography";
 import DinamicIcon from "@/components/atoms/DinamicIcon";
-const { pages } = await getPages();
+const { fetchAllPages } = await usePage();
+const { pages } = await fetchAllPages();
 //Aca se iteran todas las paginas creadas en el CMS como links para el NavBar
 ---
 
@@ -58,11 +59,12 @@ const { pages } = await getPages();
 
     //First theme check && keep default theme
     const isFirstTheme = localStorage.getItem("theme");
+    console.log("isFirstTheme", isFirstTheme);
     if (isFirstTheme === null) {
-      console.log("isFirstTheme", isFirstTheme);
       const isDarkTheme = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
+      console.log("isDarkTheme", isDarkTheme);
       if (!isDarkTheme) {
         localStorage.setItem("theme", "light");
       }

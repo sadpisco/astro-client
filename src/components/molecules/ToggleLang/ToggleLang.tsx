@@ -3,8 +3,8 @@ import Typography from "@/components/atoms/Typography";
 import { parseLangCode } from '@/utils/parsing';
 
 export default function ToggleLang() {
-
     //Users language and fallback to en
+    console.log(navigator.language);
     let firstLang = localStorage?.getItem('lang');
     if (firstLang === null) {
         if (!navigator.language) {
@@ -24,7 +24,8 @@ export default function ToggleLang() {
         if (defaultLang === 'es') {
             localStorage?.setItem('lang', 'en')
         }
-    }
+        window.location.reload();
+    };
     return (
         <section className="flex flex-row gap-2 items-center">
             <Typography className="dark:text-white text-light-400">EN</Typography>
@@ -34,5 +35,5 @@ export default function ToggleLang() {
             />
             <Typography className="dark:text-white text-light-400">ES</Typography>
         </section>
-    )
-}
+    );
+};
