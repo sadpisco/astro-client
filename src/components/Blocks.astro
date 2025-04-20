@@ -1,16 +1,49 @@
 ---
+import Typography from "@/components/atoms/Typography";
 import LandingClients from "@/components/organism/Home/LandingClients";
-import { getAllBlocksFromPage, getBlockFromManyLocales } from "@/utils/parsing";
+import LandingHero from "@/components/organism/Home/LandingHero";
+import { getBlockFromManyLocales } from "@/utils/parsing";
+import lodashPkg from "lodash";
+
+const { isEmpty } = lodashPkg;
+
 interface Blocks {
   blocks: any;
+  blockNames: string[];
 }
-const { blocks } = Astro.props;
-getAllBlocksFromPage(blocks);
+const { blocks, blockNames } = Astro.props;
 ---
 
-<section>
-  <LandingClients
-    block={getBlockFromManyLocales(blocks, "blocks.landing-hero")}
-    client:only="react"
-  />
+<section id="blocks" class="flex flex-col items-center justify-center">
+  {
+    !isEmpty(blocks) ? (
+      blockNames.map((blockName: any, index: number) => {
+        switch (blockName) {
+          case "blocks.landing-hero":
+            return (
+              <LandingHero
+                block={getBlockFromManyLocales(blocks, "blocks.landing-hero")}
+                index={index}
+                client:only="react"
+              />
+            );
+          case "blocks.landing-clients":
+            return (
+              <LandingClients
+                block={getBlockFromManyLocales(
+                  blocks,
+                  "blocks.landing-clients"
+                )}
+                client:only="react"
+                index={index}
+              />
+            );
+          default:
+            return null;
+        }
+      })
+    ) : (
+      <Typography>No blocks were found</Typography>
+    )
+  }
 </section>

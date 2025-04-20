@@ -2,9 +2,10 @@
 import Blocks from "@/components/Blocks.astro";
 import usePage from "@/hooks/usePage";
 import Layout from "@/layouts/Layout.astro";
+import { getBlockNames } from "@/utils/parsing";
 
 const { fetchPageByDocId, fetchAllPages } = await usePage();
-const { pages } = await fetchAllPages();
+const { pages, defaultLocale } = await fetchAllPages();
 const homeDocId = pages.find((page) => {
   if (page.slug === "home") return page.documentId;
 });
@@ -12,5 +13,5 @@ const blocks = await fetchPageByDocId(homeDocId?.documentId);
 ---
 
 <Layout>
-  <Blocks blocks={blocks} />
+  <Blocks blocks={blocks} blockNames={getBlockNames(blocks, defaultLocale)} />
 </Layout>

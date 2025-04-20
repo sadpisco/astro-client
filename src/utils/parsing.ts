@@ -39,9 +39,9 @@ export function getBlockFromManyLocales(data: any, blockName: string): any[] {
     return blocksToReturn;
 };
 
-export function getAllBlocksFromPage(data: any) {
-    if (!data) return [];
-    // console.log('getAllBlocksFromPage', data);
+export function getBlockNames(data: any, defaultLocale: string) {
+    const pageDefaultLocale = data.find((localesPages: any) => localesPages.data.locale === defaultLocale);
+    return pageDefaultLocale.data.blocks.map((block: any) => block.__component);
 };
 
 interface PageWithLocales extends Page {

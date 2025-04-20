@@ -12,7 +12,6 @@ export default async function usePage() {
         // 1. Get all locales
         const locales = await fetchLocales();
 
-
         // 2. Get all pages from all locales
         async function getPagesFromLocales() {
             const allPagesFromAllLocales = await Promise.all(

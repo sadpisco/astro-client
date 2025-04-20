@@ -68,7 +68,6 @@ const { pages, defaultLocale } = await fetchAllPages();
       const isDarkTheme = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
-      console.log("isDarkTheme", isDarkTheme);
       if (!isDarkTheme) {
         localStorage.setItem("theme", "light");
       }

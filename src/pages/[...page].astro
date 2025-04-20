@@ -2,6 +2,7 @@
 import Blocks from "@/components/Blocks.astro";
 import usePage from "@/hooks/usePage";
 import Layout from "@/layouts/Layout.astro";
+import { getBlockNames } from "@/utils/parsing";
 
 export async function getStaticPaths() {
   const { fetchAllPages } = await usePage();
@@ -20,11 +21,11 @@ export async function getStaticPaths() {
 }
 const { page } = Astro.params;
 const { documentId } = Astro.props;
-const { fetchPageByDocId } = await usePage();
+const { fetchPageByDocId, fetchAllPages } = await usePage();
+const { defaultLocale } = await fetchAllPages();
 const blocks = await fetchPageByDocId(documentId, page);
 ---
 
 <Layout>
-  <Blocks block={blocks} />
-  <h1 class="dark:text-white">You are on page {page}</h1>
+  <Blocks block={blocks} blockNames={getBlockNames(blocks, defaultLocale)} />
 </Layout>
