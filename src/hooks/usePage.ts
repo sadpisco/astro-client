@@ -1,6 +1,7 @@
 import GET_ALL_PAGES from "@/graphql/queries/getAllPages";
 import useLang from '@/hooks/useLang';
 import client from "@/lib/apollo-client";
+import { combinePageData } from "@/utils/parsing";
 import { orderByHome } from '@/utils/reorder';
 
 export default async function usePage() {
@@ -8,10 +9,11 @@ export default async function usePage() {
     const { fetchLocales, fetchPageBlocksByLocale } = await useLang();
 
     async function fetchAllPages() {
-        // Get all locales
+        // 1. Get all locales
         const locales = await fetchLocales();
 
-        // Get all pages from all locales
+
+        // 2. Get all pages from all locales
         async function getPagesFromLocales() {
             const allPagesFromAllLocales = await Promise.all(
                 locales.codes.map(async (code: string) => {
@@ -21,21 +23,15 @@ export default async function usePage() {
                             locale: code
                         }
                     });
-                    return data;
+                    return data.pages.map((page: any) => {
+                        return {
+                            ...page,
+                            locale: code
+                        }
+                    })
                 })
-            )
+            );
             return allPagesFromAllLocales;
-        };
-
-        // Get all slugs from all locales (unrepeated)
-        async function allLangsSlugs() {
-            const allPagesFromAllLocales = await getPagesFromLocales();
-            const slugsFromLocales = allPagesFromAllLocales.map((pages: any) => {
-                return pages.pages.map((page: any) => {
-                    return page.slug
-                });
-            });
-            return Array.from(new Set(slugsFromLocales.flat()));
         };
 
         //Principal function to fetch all pages from default Strapi's locale
@@ -47,10 +43,17 @@ export default async function usePage() {
                     locale: locales.codes[0]
                 }
             });
+            const dataPlusLocale = data.pages.map((page: any) => {
+                return {
+                    ...page,
+                    defaultLocale: locales.codes[0],
+                }
+            });
+
             return {
-                pages: orderByHome(data.pages),
+                pages: combinePageData(await getPagesFromLocales(), orderByHome(dataPlusLocale)),
+                defaultLocale: locales.codes[0],
                 allPagesLocales: await getPagesFromLocales(),
-                allLangsSlugs: await allLangsSlugs(),
                 error: null
             };
         } catch (error) {

@@ -2,12 +2,16 @@ import Switch from "@/components/atoms/Switch";
 import Typography from "@/components/atoms/Typography";
 import { parseLangCode } from '@/utils/parsing';
 
-export default function ToggleLang() {
+interface ToggleLangProps {
+    defaultLocale?: string;
+}
+
+export default function ToggleLang({ defaultLocale = 'en' }: ToggleLangProps) {
     //Users language and fallback to en
     let firstLang = localStorage?.getItem('lang');
     if (firstLang === null) {
         if (!navigator.language) {
-            localStorage?.setItem('lang', 'en')
+            localStorage?.setItem('lang', defaultLocale)
             firstLang = 'en'
         };
         localStorage?.setItem('lang', parseLangCode(navigator.language))
