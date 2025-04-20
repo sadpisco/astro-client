@@ -20,7 +20,7 @@ export default async function getCompanyData() {
             error: null
         };
     } catch (error) {
-        console.error("Error fetching company data. (useCompanyData.ts)", error);
+        console.error("Error fetching company data - useCompanyData.ts");
         return {
             companyData: null,
             error: error

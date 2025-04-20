@@ -57,7 +57,7 @@ export default async function usePage() {
                 error: null
             };
         } catch (error) {
-            console.error("Error fetching pages at usePage.ts", error);
+            console.error("Error fetching pages - usePage.ts");
             return {
                 pages: [],
                 allPagesLocales: [],

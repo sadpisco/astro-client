@@ -10,14 +10,16 @@ const endPoint = import.meta.env.LOCAL_CMS;
 ---
 
 <section class="w-full p-5 flex gap-2">
-  <Image
-    src={`${endPoint}${companyData.Logo.url}`}
-    alt={companyData.Logo.documentId}
-    width={100}
-    height={100}
+  {companyData && (
+    <Image
+      src={`${endPoint}${companyData.Logo.url}`}
+      alt={companyData.Logo.documentId}
+      width={100}
+      height={100}
   />
   <Typography>{companyData.CompanyName}</Typography>
   <Typography>{companyData.CompanyAddress}</Typography>
   <Typography>{companyData.CompanyEmail}</Typography>
   <Typography>{companyData.PhoneNumber}</Typography>
+  )}
 </section>
