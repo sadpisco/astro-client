@@ -40,8 +40,8 @@ export function getBlockFromManyLocales(data: any, blockName: string): any[] {
 };
 
 export function getBlockNames(data: any, defaultLocale: string) {
-    const pageDefaultLocale = data.find((localesPages: any) => localesPages.data.locale === defaultLocale);
-    return pageDefaultLocale.data.blocks.map((block: any) => block.__component);
+    const pageDefaultLocale = data.find((localesPages: any) => localesPages?.data?.locale === defaultLocale);
+    return pageDefaultLocale?.data?.blocks?.map((block: any) => block.__component);
 };
 
 interface PageWithLocales extends Page {

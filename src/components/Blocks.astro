@@ -17,8 +17,9 @@ const { blocks, blockNames } = Astro.props;
 <section id="blocks" class="flex flex-col items-center justify-center">
   {
     !isEmpty(blocks) ? (
-      blockNames.map((blockName: any, index: number) => {
+      blockNames?.map((blockName: any, index: number) => {
         switch (blockName) {
+          //Home Blocks
           case "blocks.landing-hero":
             return (
               <LandingHero
@@ -38,6 +39,13 @@ const { blocks, blockNames } = Astro.props;
                 index={index}
               />
             );
+          //Services Blocks
+
+          //Locations Blocks
+
+          //AboutUs Blocks
+
+          //ContactUs Blocks
           default:
             return null;
         }

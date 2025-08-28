@@ -1,9 +1,9 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client/core";
 
-const endPoint = import.meta.env.LOCAL_CMS;
+const endPoint = import.meta.env.GRAHPQL_URL;
 
 const client = new ApolloClient({
-  uri: `${endPoint}/graphql`,
+  uri: endPoint,
   cache: new InMemoryCache(),
   defaultOptions: {
     query: {
