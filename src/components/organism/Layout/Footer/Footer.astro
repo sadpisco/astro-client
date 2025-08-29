@@ -12,13 +12,13 @@ const { companyData } = await getCompanyData();
   {companyData?.Logo?.url && (
     <Image
       src={companyData.Logo.url}
-      alt={companyData.Logo.documentId}
+      alt={companyData?.Logo?.documentId ? companyData.Logo.documentId : 'Logo'}
       class="w-10 h-10"
       inferSize
   />
-  <Typography>{companyData.CompanyName}</Typography>
-  <Typography>{companyData.CompanyAddress}</Typography>
-  <Typography>{companyData.CompanyEmail}</Typography>
-  <Typography>{companyData.PhoneNumber}</Typography>
+  <Typography>{companyData?.CompanyName}</Typography>
+  <Typography>{companyData?.CompanyAddress}</Typography>
+  <Typography>{companyData?.CompanyEmail}</Typography>
+  <Typography>{companyData?.PhoneNumber}</Typography>
   )}
 </section>
