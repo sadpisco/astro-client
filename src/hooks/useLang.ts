@@ -23,7 +23,7 @@ export default async function useLang() {
     };
 
     async function fetchPageBlocksByLocale(documentId: string, code: string) {
-        const endPoint = `${import.meta.env.LOCAL_CMS}/api/pages/${documentId}?populate[blocks][populate]=*&locale=${code}`;
+        const endPoint = `${import.meta.env.CMS_URL}/api/pages/${documentId}?populate[blocks][populate]=*&locale=${code}`;
         const response = await fetch(endPoint)
         if (!response.ok) throw new Error('Failed to fetch data');
         return response.json();
